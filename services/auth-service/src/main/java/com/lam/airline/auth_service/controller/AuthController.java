@@ -29,12 +29,8 @@ public class AuthController {
         return authService.login(request);
     }
 
-    @GetMapping("/test")
-    public String testToken(@RequestHeader("Authorization") String authHeader) {
-
-        String token = authHeader.substring(7);
-
-        return jwtService.extractUsername(token);
-
+    @GetMapping("/profile")
+    public String profile() {
+        return "Jwt Authenticated User";
     }
 }
