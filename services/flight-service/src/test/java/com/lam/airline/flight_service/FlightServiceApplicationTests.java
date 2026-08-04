@@ -1,12 +1,12 @@
-package com.lam.airline.discovery_server;
+package com.lam.airline.flight_service;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Disabled
-class DiscoveryServerApplicationTests {
+class FlightServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

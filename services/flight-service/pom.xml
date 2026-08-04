@@ -13,9 +13,9 @@
 	</parent>
 
 	<groupId>com.lam.airline</groupId>
-	<artifactId>auth-service</artifactId>
+	<artifactId>flight-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>auth-service</name>
+	<name>flight-service</name>
 	<description>Authentication Service</description>
 
 	<properties>
@@ -131,27 +131,27 @@
 
 	<build>
 
-<!--		<plugins>-->
+		<!--		<plugins>-->
 
-<!--			<plugin>-->
-<!--				<groupId>org.springframework.boot</groupId>-->
-<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--			</plugin>-->
+		<!--			<plugin>-->
+		<!--				<groupId>org.springframework.boot</groupId>-->
+		<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+		<!--			</plugin>-->
 
-<!--			<plugin>-->
-<!--				<groupId>org.apache.maven.plugins</groupId>-->
-<!--				<artifactId>maven-compiler-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<annotationProcessorPaths>-->
-<!--						<path>-->
-<!--							<groupId>org.projectlombok</groupId>-->
-<!--							<artifactId>lombok</artifactId>-->
-<!--						</path>-->
-<!--					</annotationProcessorPaths>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+		<!--			<plugin>-->
+		<!--				<groupId>org.apache.maven.plugins</groupId>-->
+		<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+		<!--				<configuration>-->
+		<!--					<annotationProcessorPaths>-->
+		<!--						<path>-->
+		<!--							<groupId>org.projectlombok</groupId>-->
+		<!--							<artifactId>lombok</artifactId>-->
+		<!--						</path>-->
+		<!--					</annotationProcessorPaths>-->
+		<!--				</configuration>-->
+		<!--			</plugin>-->
 
-<!--		</plugins>-->
+		<!--		</plugins>-->
 		<plugins>
 
 			<plugin>

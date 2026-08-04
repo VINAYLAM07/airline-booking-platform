@@ -1,3 +1,22 @@
+#server:
+#  port: 8888
+#
+#spring:
+#  application:
+#    name: config-server
+#
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: /home/vinaylam/projects/airline-platform/config-repo
+#          default-label: main
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+
 server:
   port: 8888
 
@@ -8,11 +27,10 @@ spring:
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/config
-
-  profiles:
-    active: native
+        git:
+          uri: https://github.com/VINAYLAM07/airline-config-repo.git
+          default-label: main
+          clone-on-start: true
 
 eureka:
   client:
