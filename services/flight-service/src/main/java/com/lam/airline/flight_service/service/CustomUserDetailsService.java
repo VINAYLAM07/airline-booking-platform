@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service.service;
+package com.lam.airline.flight_service.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;

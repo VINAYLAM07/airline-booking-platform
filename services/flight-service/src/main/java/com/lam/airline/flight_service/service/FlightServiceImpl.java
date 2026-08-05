@@ -1,11 +1,10 @@
-package com.lam.airline.booking_service.service;
+package com.lam.airline.flight_service.service;
 
-import com.lam.airline.booking_service.dto.FlightRequest;
-import com.lam.airline.booking_service.dto.FlightResponse;
-import com.lam.airline.booking_service.entity.Flight;
-import com.lam.airline.booking_service.exception.ResourceNotFoundException;
-import com.lam.airline.booking_service.repository.FlightRepository;
-import com.lam.airline.booking_service.service.FlightService;
+import com.lam.airline.flight_service.dto.FlightRequest;
+import com.lam.airline.flight_service.dto.FlightResponse;
+import com.lam.airline.flight_service.entity.Flight;
+import com.lam.airline.flight_service.exception.ResourceNotFoundException;
+import com.lam.airline.flight_service.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -72,6 +71,31 @@ public class FlightServiceImpl implements FlightService {
                 .stream()
                 .map(this::map)
                 .toList();
+    }
+
+    @Override
+    public void reserveSeats(
+            Long flightId,
+            Integer seats) {
+        System.out.println("In flight  service impl");
+        Flight flight =
+                repository.findById(flightId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException("Flight not found"));
+
+        if(flight.getAvailableSeats() < seats){
+            throw new RuntimeException("Seats not available");
+        }
+
+        flight.setAvailableSeats(
+                flight.getAvailableSeats() - seats
+        );
+        System.out.println("Flight ID = " + flightId);
+        System.out.println("Requested seats = " + seats);
+        System.out.println("Available = " + flight.getAvailableSeats());
+        repository.save(flight);
+
+
     }
 
     private FlightResponse map(Flight flight) {

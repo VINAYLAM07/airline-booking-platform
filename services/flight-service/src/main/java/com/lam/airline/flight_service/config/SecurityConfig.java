@@ -1,6 +1,6 @@
-package com.lam.airline.booking_service.config;
+package com.lam.airline.flight_service.config;
 
-import com.lam.airline.booking_service.security.JwtAuthenticationFilter;
+import com.lam.airline.flight_service.security.JwtAuthenticationFilter;
 import jakarta.ws.rs.HttpMethod;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

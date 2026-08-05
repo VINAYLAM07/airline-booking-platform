@@ -4,6 +4,7 @@ import com.lam.airline.booking_service.client.FlightClient;
 import com.lam.airline.booking_service.dto.BookingRequest;
 import com.lam.airline.booking_service.dto.BookingResponse;
 import com.lam.airline.booking_service.dto.FlightResponse;
+import com.lam.airline.booking_service.dto.ReserveSeatRequest;
 import com.lam.airline.booking_service.entity.Booking;
 import com.lam.airline.booking_service.repository.BookingRepository;
 import com.lam.airline.booking_service.service.BookingService;
@@ -20,13 +21,16 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingResponse createBooking(BookingRequest request) {
 
-        FlightResponse flight =
-                flightClient.getFlight(request.getFlightId());
+        ReserveSeatRequest reserveRequest =
+                new ReserveSeatRequest();
 
-        if (flight.getAvailableSeats() < request.getSeats()) {
-            throw new RuntimeException("Seats not available");
-        }
-
+        reserveRequest.setSeats(request.getSeats());
+        System.out.println("Before feign client");
+        flightClient.reserveSeats(
+                request.getFlightId(),
+                reserveRequest
+        );
+        System.out.println("After feign client");
         Booking booking = Booking.builder()
                 .flightId(request.getFlightId())
                 .passengerName(request.getPassengerName())

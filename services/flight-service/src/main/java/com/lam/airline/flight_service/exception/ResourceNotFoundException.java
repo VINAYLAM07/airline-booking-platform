@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service.exception;
+package com.lam.airline.flight_service.exception;
 
 public class ResourceNotFoundException
         extends RuntimeException {

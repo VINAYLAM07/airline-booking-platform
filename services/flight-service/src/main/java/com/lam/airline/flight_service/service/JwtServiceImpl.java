@@ -1,7 +1,6 @@
-package com.lam.airline.booking_service.service;
+package com.lam.airline.flight_service.service;
 
 
-import com.lam.airline.booking_service.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service;
+package com.lam.airline.flight_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

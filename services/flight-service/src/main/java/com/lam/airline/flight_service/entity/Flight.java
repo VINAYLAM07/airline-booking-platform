@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service.entity;
+package com.lam.airline.flight_service.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

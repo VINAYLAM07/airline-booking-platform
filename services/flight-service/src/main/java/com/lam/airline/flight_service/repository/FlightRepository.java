@@ -1,6 +1,6 @@
-package com.lam.airline.booking_service.repository;
+package com.lam.airline.flight_service.repository;
 
-import com.lam.airline.booking_service.entity.Flight;
+import com.lam.airline.flight_service.entity.Flight;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.lam.airline.booking_service.security;
+package com.lam.airline.flight_service.security;
 
-import com.lam.airline.booking_service.service.CustomUserDetailsService;
-import com.lam.airline.booking_service.service.JwtService;
+import com.lam.airline.flight_service.service.CustomUserDetailsService;
+import com.lam.airline.flight_service.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

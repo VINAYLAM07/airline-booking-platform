@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service;
+package com.lam.airline.flight_service;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

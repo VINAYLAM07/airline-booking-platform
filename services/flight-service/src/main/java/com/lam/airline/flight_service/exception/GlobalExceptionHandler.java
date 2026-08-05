@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service.exception;
+package com.lam.airline.flight_service.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

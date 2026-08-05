@@ -1,7 +1,7 @@
-package com.lam.airline.booking_service.service;
+package com.lam.airline.flight_service.service;
 
-import com.lam.airline.booking_service.dto.FlightRequest;
-import com.lam.airline.booking_service.dto.FlightResponse;
+import com.lam.airline.flight_service.dto.FlightRequest;
+import com.lam.airline.flight_service.dto.FlightResponse;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -19,5 +19,10 @@ public interface FlightService {
     List<FlightResponse> searchFlights(
             String source,
             String destination
+    );
+
+    void reserveSeats(
+            Long flightId,
+            Integer seats
     );
 }

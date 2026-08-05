@@ -1,4 +1,4 @@
-package com.lam.airline.booking_service.dto;
+package com.lam.airline.flight_service.dto;
 
 import lombok.Builder;
 import lombok.Data;

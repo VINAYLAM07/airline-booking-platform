@@ -17,7 +17,7 @@ public class BookingController {
     @PostMapping
     public BookingResponse createBooking(
             @Valid @RequestBody BookingRequest request) {
-
+            System.out.println("In Booking controller");
         return bookingService.createBooking(request);
     }
 

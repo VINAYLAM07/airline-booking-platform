@@ -1,8 +1,9 @@
-package com.lam.airline.booking_service.controller;
+package com.lam.airline.flight_service.controller;
 
-import com.lam.airline.booking_service.dto.FlightRequest;
-import com.lam.airline.booking_service.dto.FlightResponse;
-import com.lam.airline.booking_service.service.FlightService;
+import com.lam.airline.flight_service.dto.FlightRequest;
+import com.lam.airline.flight_service.dto.FlightResponse;
+import com.lam.airline.flight_service.dto.ReserveSeatRequest;
+import com.lam.airline.flight_service.service.FlightService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -53,5 +54,14 @@ public class FlightController {
                 source,
                 destination
         );
+    }
+
+    @PostMapping("/{id}/reserve")
+    public void reserveSeats(@PathVariable Long id, @RequestBody ReserveSeatRequest request) {
+        System.out.println("In Flight controller");
+        flightService.reserveSeats(id, request.getSeats());
+        // Log the latest available seats count
+        int availableSeats = flightService.getFlightById(id).getAvailableSeats();
+        System.out.println(id+" ==== "+availableSeats);
     }
 }
