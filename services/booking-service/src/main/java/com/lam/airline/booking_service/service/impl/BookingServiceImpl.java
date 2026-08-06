@@ -17,6 +17,7 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository repository;
     private final FlightClient flightClient;
+    private final BookingEventProducer producer;
 
     @Override
     public BookingResponse createBooking(BookingRequest request) {
@@ -39,7 +40,15 @@ public class BookingServiceImpl implements BookingService {
                 .build();
 
         Booking saved = repository.save(booking);
+        BookingCreatedEvent event =
+                BookingCreatedEvent.builder()
+                        .bookingId(saved.getId())
+                        .flightId(saved.getFlightId())
+                        .passengerName(saved.getPassengerName())
+                        .seats(saved.getSeats())
+                        .build();
 
+        producer.publish(event);
         return map(saved);
     }
 
