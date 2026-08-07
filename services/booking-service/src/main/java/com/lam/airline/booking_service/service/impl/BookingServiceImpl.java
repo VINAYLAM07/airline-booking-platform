@@ -1,11 +1,9 @@
 package com.lam.airline.booking_service.service.impl;
 
 import com.lam.airline.booking_service.client.FlightClient;
-import com.lam.airline.booking_service.dto.BookingRequest;
-import com.lam.airline.booking_service.dto.BookingResponse;
-import com.lam.airline.booking_service.dto.FlightResponse;
-import com.lam.airline.booking_service.dto.ReserveSeatRequest;
+import com.lam.airline.booking_service.dto.*;
 import com.lam.airline.booking_service.entity.Booking;
+import com.lam.airline.booking_service.producer.BookingEventProducer;
 import com.lam.airline.booking_service.repository.BookingRepository;
 import com.lam.airline.booking_service.service.BookingService;
 import lombok.RequiredArgsConstructor;
