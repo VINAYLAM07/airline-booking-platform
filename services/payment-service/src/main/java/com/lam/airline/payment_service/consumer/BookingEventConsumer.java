@@ -1,7 +1,8 @@
 package com.lam.airline.payment_service.consumer;
 
-import com.lam.airline.payment_service.dto.BookingCreatedEvent;
-import com.lam.airline.payment_service.service.PaymentService;
+import com.lam.airline.common.events.BookingCreatedEvent;
+import com.lam.airline.payment_service.entity.Payment;
+import com.lam.airline.payment_service.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -10,19 +11,26 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BookingEventConsumer {
 
-    private final PaymentService paymentService;
+    private final PaymentRepository repository;
 
     @KafkaListener(
             topics = "booking-created",
             groupId = "payment-group"
     )
-    public void consume(
-            BookingCreatedEvent event) {
+    public void consume(BookingCreatedEvent event) {
 
-        System.out.println(
-                "====== Received Booking Event : "
-                        + event.getBookingId());
+        System.out.println("Payment received booking : "
+                + event.getBookingId());
 
-        paymentService.processPayment(event);
+        Payment payment = Payment.builder()
+                .bookingId(event.getBookingId())
+                .flightId(event.getFlightId())
+                .passengerName(event.getPassengerName())
+                .status("SUCCESS")
+                .build();
+
+        repository.save(payment);
+
+        System.out.println("Payment saved.");
     }
 }

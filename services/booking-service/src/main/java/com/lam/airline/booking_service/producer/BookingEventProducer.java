@@ -1,6 +1,6 @@
 package com.lam.airline.booking_service.producer;
 
-import com.lam.airline.booking_service.dto.BookingCreatedEvent;
+import com.lam.airline.common.events.BookingCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;

@@ -1,10 +1,12 @@
-package com.lam.airline.payment_service.dto;
+package com.lam.airline.common.events;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookingCreatedEvent {
 
     private Long bookingId;

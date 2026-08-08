@@ -1,6 +1,6 @@
 package com.lam.airline.payment_service.service.impl;
 
-import com.lam.airline.payment_service.dto.BookingCreatedEvent;
+import com.lam.airline.common.events.BookingCreatedEvent;
 import com.lam.airline.payment_service.entity.Payment;
 import com.lam.airline.payment_service.repository.PaymentRepository;
 import com.lam.airline.payment_service.service.PaymentService;

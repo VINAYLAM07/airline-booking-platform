@@ -1,6 +1,6 @@
 package com.lam.airline.payment_service.service;
 
-import com.lam.airline.payment_service.dto.BookingCreatedEvent;
+import com.lam.airline.common.events.BookingCreatedEvent;
 
 public interface PaymentService {
 
