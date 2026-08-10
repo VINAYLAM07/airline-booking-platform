@@ -1,2 +1,4 @@
+com/lam/airline/common/events/PaymentCompletedEvent$PaymentCompletedEventBuilder.class
 com/lam/airline/common/events/BookingCreatedEvent$BookingCreatedEventBuilder.class
 com/lam/airline/common/events/BookingCreatedEvent.class
+com/lam/airline/common/events/PaymentCompletedEvent.class

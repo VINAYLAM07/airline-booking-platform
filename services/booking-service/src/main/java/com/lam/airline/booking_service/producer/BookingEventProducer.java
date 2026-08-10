@@ -12,7 +12,10 @@ public class BookingEventProducer {
     private final KafkaTemplate<String, BookingCreatedEvent> kafkaTemplate;
 
     public void publish(BookingCreatedEvent event) {
-
+        System.out.println("BK BookingId = " + event.getBookingId());
+        System.out.println("BK FlightId = " + event.getFlightId());
+        System.out.println("BK Passenger = " + event.getPassengerName());
+        System.out.println("BK Seats = " + event.getSeats());
         kafkaTemplate.send("booking-created", event);
 
         System.out.println(

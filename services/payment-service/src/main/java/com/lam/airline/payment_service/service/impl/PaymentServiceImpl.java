@@ -21,6 +21,10 @@ public class PaymentServiceImpl
         System.out.println(
                 "Processing payment for booking "
                         + event.getBookingId());
+        System.out.println("BookingId = " + event.getBookingId());
+        System.out.println("FlightId = " + event.getFlightId());
+        System.out.println("Passenger = " + event.getPassengerName());
+        System.out.println("Seats = " + event.getSeats());
 
         Payment payment = Payment.builder()
                 .bookingId(event.getBookingId())
