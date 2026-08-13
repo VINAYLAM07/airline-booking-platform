@@ -1,6 +1,7 @@
 package com.lam.airline.booking_service.service.impl;
 
-import com.lam.airline.booking_service.client.FlightClient;
+
+import com.lam.airline.booking_service.service.FlightReservationService;
 import com.lam.airline.common.events.BookingCreatedEvent;
 import com.lam.airline.booking_service.dto.BookingRequest;
 import com.lam.airline.booking_service.dto.BookingResponse;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository repository;
-    private final FlightClient flightClient;
+    private final FlightReservationService flightReservationService;
     private final BookingEventProducer producer;
 
     @Override
@@ -27,17 +28,19 @@ public class BookingServiceImpl implements BookingService {
                 new ReserveSeatRequest();
 
         reserveRequest.setSeats(request.getSeats());
-        System.out.println("Before feign client");
-        flightClient.reserveSeats(
+        System.out.println("Before flight reservation");
+
+        flightReservationService.reserveSeats(
                 request.getFlightId(),
                 reserveRequest
         );
-        System.out.println("After feign client");
+
+        System.out.println("After flight reservation");
         Booking booking = Booking.builder()
                 .flightId(request.getFlightId())
                 .passengerName(request.getPassengerName())
                 .seats(request.getSeats())
-                .status("CONFIRMED")
+                .status("PENDING")
                 .build();
 
         Booking saved = repository.save(booking);
