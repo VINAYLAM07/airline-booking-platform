@@ -8,6 +8,7 @@ import com.lam.airline.auth_service.service.JwtService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,7 +31,7 @@ public class AuthController {
     }
 
     @GetMapping("/profile")
-    public String profile() {
-        return "Jwt Authenticated User";
+    public String profile(Authentication authentication) {
+        return "Authenticated user: " + authentication.getName();
     }
 }

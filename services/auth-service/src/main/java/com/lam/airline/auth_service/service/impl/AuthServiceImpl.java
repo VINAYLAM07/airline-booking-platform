@@ -9,6 +9,8 @@ import com.lam.airline.auth_service.repository.UserRepository;
 import com.lam.airline.auth_service.service.JwtService;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
     @Override
     public void register(RegisterRequest request) {
 
@@ -35,13 +38,14 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponse login(LoginRequest request) {
-       User user = userRepository.findByEmail(request.email())
-                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.email(),
+                        request.password()
+                )
+        );
 
-        if(!passwordEncoder.matches(request.password(), user.getPassword())){
-            throw new RuntimeException("Invalid email or password ");
-        }
-        String token = jwtService.generateToken(user.getEmail());
+        String token = jwtService.generateToken(request.email());
 
         return new LoginResponse(token);
 
