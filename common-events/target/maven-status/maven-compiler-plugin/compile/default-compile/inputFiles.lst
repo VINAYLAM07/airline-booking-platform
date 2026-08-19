@@ -1,2 +1,4 @@
 /home/vinaylam/projects/airline-platform/common-events/src/main/java/com/lam/airline/common/events/BookingCreatedEvent.java
 /home/vinaylam/projects/airline-platform/common-events/src/main/java/com/lam/airline/common/events/PaymentCompletedEvent.java
+/home/vinaylam/projects/airline-platform/common-events/src/main/java/com/lam/airline/common/events/PaymentFailedEvent.java
+/home/vinaylam/projects/airline-platform/common-events/src/main/java/com/lam/airline/common/events/ReleaseSeatEvent.java

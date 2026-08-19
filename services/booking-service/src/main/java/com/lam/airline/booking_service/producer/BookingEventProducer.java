@@ -2,7 +2,11 @@ package com.lam.airline.booking_service.producer;
 
 import com.lam.airline.common.events.BookingCreatedEvent;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.MDC;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,7 +20,21 @@ public class BookingEventProducer {
         System.out.println("BK FlightId = " + event.getFlightId());
         System.out.println("BK Passenger = " + event.getPassengerName());
         System.out.println("BK Seats = " + event.getSeats());
-        kafkaTemplate.send("booking-created", event);
+        Message<BookingCreatedEvent> message =
+                MessageBuilder
+                        .withPayload(event)
+                        .setHeader(
+                                KafkaHeaders.TOPIC,
+                                "booking-created"
+                        )
+                        .setHeader(
+                                "X-Correlation-ID",
+                                MDC.get("correlationId")
+                        )
+                        .build();
+
+        kafkaTemplate.send(message);
+//        kafkaTemplate.send("booking-created", event);
 
         System.out.println(
                 "Published booking event : "

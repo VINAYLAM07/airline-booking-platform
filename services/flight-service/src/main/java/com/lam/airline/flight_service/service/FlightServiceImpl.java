@@ -6,6 +6,8 @@ import com.lam.airline.flight_service.entity.Flight;
 import com.lam.airline.flight_service.exception.ResourceNotFoundException;
 import com.lam.airline.flight_service.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -53,8 +55,9 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    @Cacheable(value = "flights", key = "#id")
     public FlightResponse getFlightById(Long id) {
-
+        System.out.println("🔥 DATABASE HIT");
         Flight flight = repository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Flight not found"));
 
@@ -74,6 +77,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    @CacheEvict(value = "flights", key = "#flightId")
     public void reserveSeats(
             Long flightId,
             Integer seats) {
